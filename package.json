@@ -1,0 +1,14 @@
+{
+  "name": "absence",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  },
+  "scripts": {
+    "client": "cd client && yarn && yarn start",
+    "server": "cd apiserver && yarn && yarn start --watch",
+    "start": "concurrently \"yarn run server\" \"yarn run client\""
+  }
+}
