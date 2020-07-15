@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AbsencesService } from './absences.service';
 
 @Controller('absences')
@@ -7,5 +7,10 @@ export class AbsencesController {
   @Get()
   getAbsencese(): any {
     return this.absencesService.getAbsences();
+  }
+
+  @Get('/:userId')
+  getAbsencesOfUser(@Param('userId') userId: string): any {
+    return this.absencesService.getAbsencesOfUser(userId);
   }
 }
