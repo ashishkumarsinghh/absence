@@ -1,6 +1,7 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, Res } from '@nestjs/common';
 import { AbsencesService } from './absences.service';
-
+import { Response } from 'express';
+import { join } from 'path';
 @Controller('absences')
 export class AbsencesController {
   constructor(private readonly absencesService: AbsencesService) {}
@@ -20,5 +21,15 @@ export class AbsencesController {
   @Get('/uid/:userId')
   getAbsencesOfUser(@Param('userId') userId: string): any {
     return this.absencesService.getAbsencesOfUser(userId);
+  }
+
+  @Get('/export')
+  getICalFile(@Res() res: Response): any {
+    this.absencesService.getICalFile().save('calendar.ics', (err, file) => {
+      if (err) res.send(err);
+      else {
+        res.sendFile(join(process.cwd(), 'calendar.ics'));
+      }
+    });
   }
 }
