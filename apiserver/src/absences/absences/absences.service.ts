@@ -4,7 +4,6 @@ import absences from './absences';
 export class AbsencesService {
   absenceArr = absences.payload;
   getAbsences(): any {
-    console.log(this.absenceArr);
     return this.absenceArr;
   }
 
@@ -13,5 +12,13 @@ export class AbsencesService {
       item => item.userId.toString() === userId,
     );
     return absOfuser;
+  }
+  getAbsencesInRange(startDate: string, endDate: string): any {
+    const absInRange = this.absenceArr.filter(
+      item =>
+        new Date(item.endDate) <= new Date(endDate) &&
+        new Date(item.endDate) >= new Date(startDate),
+    );
+    return absInRange;
   }
 }
