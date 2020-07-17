@@ -27,6 +27,13 @@ export class AbsencesService {
     return absInRange;
   }
 
+  getAbsenceByType(lType: string): any {
+    if (lType === 'vacation') {
+      return this.absenceArr.filter(item => item.type == 'vacation');
+    } else if (lType === 'sickness') {
+      return this.absenceArr.filter(item => item.type == 'sickness');
+    } else return [];
+  }
   getICalFile(): any {
     const events = this.absenceArr.map(item => {
       const mName = this.memberService.getMemberName(item.userId.toString());

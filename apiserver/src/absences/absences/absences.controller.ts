@@ -10,12 +10,17 @@ export class AbsencesController {
     return this.absencesService.getAbsences();
   }
 
-  @Get('/absr')
+  @Get('/range')
   getAbsencesInRange(
     @Query('startDate') sd: string,
     @Query('endDate') ed: string,
   ): any {
     return this.absencesService.getAbsencesInRange(sd, ed);
+  }
+
+  @Get('/ltype/:lType')
+  getAbsenceByType(@Param('lType') lType: string): any {
+    return this.absencesService.getAbsenceByType(lType);
   }
 
   @Get('/uid/:userId')
