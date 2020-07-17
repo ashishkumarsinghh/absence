@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import config from "./config";
-import "./styles/main.css";
 import { Container } from "react-bootstrap";
-import Card from "./Card";
+import Leaves from "./Leaves";
 function App() {
   return (
     <Container fluid className="App">
-      <Card />
+      <Leaves />
     </Container>
   );
 }
