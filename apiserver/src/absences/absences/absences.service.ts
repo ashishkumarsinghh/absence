@@ -5,8 +5,8 @@ import * as fs from 'fs';
 import { MemberService } from 'src/member/member/member.service';
 @Injectable()
 export class AbsencesService {
+  constructor(private readonly memberService: MemberService) {}
   absenceArr = absences.payload;
-  memberService = new MemberService();
   cal = ical({ domain: 'crewmeister.com', name: 'Absences ICal' });
   getAbsences(): any {
     return this.absenceArr;
@@ -28,11 +28,18 @@ export class AbsencesService {
   }
 
   getAbsenceByType(lType: string): any {
+    let res: Array<any>;
     if (lType === 'vacation') {
-      return this.absenceArr.filter(item => item.type == 'vacation');
+      res = this.absenceArr.filter(item => item.type == 'vacation');
     } else if (lType === 'sickness') {
-      return this.absenceArr.filter(item => item.type == 'sickness');
-    } else return [];
+      res = this.absenceArr.filter(item => item.type == 'sickness');
+    } else res = [];
+    const result = res.map(item => {
+      const name = this.memberService.getMemberName(item.userId);
+      return { name, startDate: item.startDate, endDate: item.endDate };
+    });
+    console.log(result);
+    return result;
   }
   getICalFile(): any {
     const events = this.absenceArr.map(item => {

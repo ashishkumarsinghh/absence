@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import config from "./config";
+import "./styles/main.css";
+import { Container } from "react-bootstrap";
+import Card from "./Card";
 function App() {
-  useEffect(() => {
-    fetch(`${config.apiServerBaseUrl}absences/export`).then((res) =>
-      res.json().then((data) => console.log(data))
-    );
-  });
-  return <div className="App"></div>;
+  return (
+    <Container fluid className="App">
+      <Card />
+    </Container>
+  );
 }
 
 export default App;

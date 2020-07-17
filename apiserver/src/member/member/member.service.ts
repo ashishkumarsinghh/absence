@@ -7,11 +7,16 @@ export class MemberService {
     return members;
   }
   getMemberName(userId: string): any {
+    //console.log('queerid', userId);
+    let name;
     this.membersArr.forEach(item => {
-      if (item.userId.toString() === userId) {
-        return item.name;
+      //console.log(item.userId.toString());
+      if (item.userId.toString() == userId.toString()) {
+        //console.log('matched');
+        name = item.name.toString();
+        return;
       }
     });
-    return null;
+    return name;
   }
 }
