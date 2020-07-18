@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import absences from './absences';
 import * as ical from 'ical-generator';
-import * as fs from 'fs';
 import { MemberService } from 'src/member/member/member.service';
 @Injectable()
 export class AbsencesService {
@@ -60,8 +59,7 @@ export class AbsencesService {
       const ea = {
         start: startDate,
         end: endDate,
-        title: `${mName} ${item.type}`,
-        summary: `${item.memberNote}`,
+        summary: `${mName} - ${item.type} - ${item.memberNote}`,
       };
       return ea;
     });
