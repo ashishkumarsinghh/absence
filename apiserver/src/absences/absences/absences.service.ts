@@ -24,7 +24,11 @@ export class AbsencesService {
         new Date(item.endDate) <= new Date(endDate) &&
         new Date(item.endDate) >= new Date(startDate),
     );
-    return absInRange;
+    const result = absInRange.map(item => {
+      const name = this.memberService.getMemberName(item.userId.toString());
+      return { name, startDate: item.startDate, endDate: item.endDate };
+    });
+    return result;
   }
 
   getAbsenceByType(lType: string): any {

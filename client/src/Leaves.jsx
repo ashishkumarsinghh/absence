@@ -23,7 +23,7 @@ export default function Leaves() {
           <Col>
             <Card>
               <Accordion.Toggle as={Card.Header} eventKey="0">
-                <h2>Vacations</h2>
+                <h4>Vacations</h4>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
                 <Card.Body>
@@ -46,7 +46,7 @@ export default function Leaves() {
           <Col>
             <Card>
               <Accordion.Toggle as={Card.Header} eventKey="1">
-                <h2>Sickness</h2>
+                <h4>Sickness</h4>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
                 <Card.Body>
