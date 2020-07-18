@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, CardColumns } from "react-bootstrap";
+import { Row, Col, CardColumns, Accordion, Card } from "react-bootstrap";
 import LCard from "./LCard";
 export default function Leaves() {
   const [vacations, setvacations] = useState([]);
@@ -18,31 +18,49 @@ export default function Leaves() {
   }, []);
   return (
     <React.Fragment>
-      <Row>
-        <Col>
-          <h2>Vacations</h2>
-          <CardColumns>
-            {vacations.map((v) => (
-              <LCard name={v.name} sd={v.startDate} ed={v.endDate} />
-            ))}
-          </CardColumns>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <br />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h2>Sickness</h2>
-          <CardColumns>
-            {vacations.map((v) => (
-              <LCard name={v.name} sd={v.startDate} ed={v.endDate} />
-            ))}
-          </CardColumns>
-        </Col>
-      </Row>
+      <Accordion>
+        <Row>
+          <Col>
+            <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="0">
+                <h2>Vacations</h2>
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body>
+                  <CardColumns>
+                    {vacations.map((v) => (
+                      <LCard name={v.name} sd={v.startDate} ed={v.endDate} />
+                    ))}
+                  </CardColumns>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <br />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="1">
+                <h2>Sickness</h2>
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body>
+                  <CardColumns>
+                    {sickness.map((v) => (
+                      <LCard name={v.name} sd={v.startDate} ed={v.endDate} />
+                    ))}
+                  </CardColumns>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Col>
+        </Row>
+      </Accordion>
     </React.Fragment>
   );
 }
