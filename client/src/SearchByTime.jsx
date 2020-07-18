@@ -34,7 +34,7 @@ export default function SearchByTime() {
     <Accordion>
       <Card>
         <Accordion.Toggle as={Card.Header} eventKey="0">
-          <h4>Search Absences in Time Range</h4>
+          <h4> ⯆ Search Absences in Time Range</h4>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey="0">
           <Card.Body>
