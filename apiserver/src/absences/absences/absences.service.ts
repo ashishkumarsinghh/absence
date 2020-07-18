@@ -16,7 +16,11 @@ export class AbsencesService {
     const absOfuser = this.absenceArr.filter(
       item => item.userId.toString() === userId,
     );
-    return absOfuser;
+    const result = absOfuser.map(item => {
+      const name = this.memberService.getMemberName(item.userId.toString());
+      return { name, startDate: item.startDate, endDate: item.endDate };
+    });
+    return result;
   }
   getAbsencesByName(name: string): any {
     const uid = this.memberService.getMemberId(name);
@@ -46,7 +50,6 @@ export class AbsencesService {
       const name = this.memberService.getMemberName(item.userId);
       return { name, startDate: item.startDate, endDate: item.endDate };
     });
-    console.log(result);
     return result;
   }
   getICalFile(): any {
