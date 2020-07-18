@@ -30,9 +30,14 @@ export class AbsencesController {
 
   @Get('/export')
   getICalFile(@Res() res: Response): any {
-    this.absencesService.getICalFile().save('calendar.ics', (err, file) => {
+    this.absencesService.getICalFile().save('calendar.ics', err => {
       if (err) res.send(err);
       else {
+        res.setHeader('Content-Type', 'application/octet-stream');
+        res.setHeader(
+          'Content-Disposition',
+          'attachment; filename=crewmeister.ics',
+        );
         res.sendFile(join(process.cwd(), 'calendar.ics'));
       }
     });

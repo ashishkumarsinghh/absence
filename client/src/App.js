@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import Leaves from "./Leaves";
 import SearchByTime from "./SearchByTime";
 import SearchByName from "./SearchByName";
+import ExportCal from "./ExportCal";
 function App() {
   return (
     <Container fluid className="App">
@@ -12,6 +13,8 @@ function App() {
       <SearchByTime />
       <br />
       <SearchByName />
+      <br />
+      <ExportCal />
     </Container>
   );
 }
