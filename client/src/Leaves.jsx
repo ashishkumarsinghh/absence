@@ -21,7 +21,7 @@ export default function Leaves() {
       <Accordion>
         <Row>
           <Col>
-            <Card>
+            <Card bg="success">
               <Accordion.Toggle as={Card.Header} eventKey="0">
                 <h4> ⯆ Vacations</h4>
               </Accordion.Toggle>

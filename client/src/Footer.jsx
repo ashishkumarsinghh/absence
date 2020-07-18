@@ -8,6 +8,7 @@ export default function Footer() {
         <a
           href="https://www.linkedin.com/in/ashishkumarsinghh/"
           target="_blank"
+          rel="noopener  noreferrer"
         >
           Ashish Kumar Singh
         </a>
