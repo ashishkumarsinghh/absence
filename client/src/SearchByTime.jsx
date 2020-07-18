@@ -71,7 +71,12 @@ export default function SearchByTime() {
             </Form>
             <CardColumns>
               {absences.map((item) => (
-                <LCard name={item.name} sd={item.startDate} ed={item.endDate} />
+                <LCard
+                  name={item.name}
+                  sd={item.startDate}
+                  ed={item.endDate}
+                  key={item.name + item.startDate}
+                />
               ))}
             </CardColumns>
           </Card.Body>

@@ -28,8 +28,13 @@ export default function Leaves() {
               <Accordion.Collapse eventKey="0">
                 <Card.Body>
                   <CardColumns>
-                    {vacations.map((v) => (
-                      <LCard name={v.name} sd={v.startDate} ed={v.endDate} />
+                    {vacations.map((v, idx) => (
+                      <LCard
+                        name={v.name}
+                        sd={v.startDate}
+                        ed={v.endDate}
+                        key={v.name + v.startDate + v.endDate + idx}
+                      />
                     ))}
                   </CardColumns>
                 </Card.Body>
@@ -51,8 +56,13 @@ export default function Leaves() {
               <Accordion.Collapse eventKey="1">
                 <Card.Body>
                   <CardColumns>
-                    {sickness.map((v) => (
-                      <LCard name={v.name} sd={v.startDate} ed={v.endDate} />
+                    {sickness.map((v, idx) => (
+                      <LCard
+                        name={v.name}
+                        sd={v.startDate}
+                        ed={v.endDate}
+                        key={v.name + v.startDate + v.endDate + idx}
+                      />
                     ))}
                   </CardColumns>
                 </Card.Body>

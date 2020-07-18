@@ -6,13 +6,21 @@ export class MemberService {
   getMembers(): any {
     return members;
   }
+
+  getMemberId(name: string): any {
+    let uid;
+    this.membersArr.forEach(item => {
+      if (item.name.toLowerCase() == name.toLowerCase()) {
+        uid = item.userId.toString();
+        return;
+      }
+    });
+    return uid;
+  }
   getMemberName(userId: string): any {
-    //console.log('queerid', userId);
     let name;
     this.membersArr.forEach(item => {
-      //console.log(item.userId.toString());
       if (item.userId.toString() == userId.toString()) {
-        //console.log('matched');
         name = item.name.toString();
         return;
       }

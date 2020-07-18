@@ -18,6 +18,10 @@ export class AbsencesService {
     );
     return absOfuser;
   }
+  getAbsencesByName(name: string): any {
+    const uid = this.memberService.getMemberId(name);
+    return this.getAbsencesOfUser(uid);
+  }
   getAbsencesInRange(startDate: string, endDate: string): any {
     const absInRange = this.absenceArr.filter(
       item =>

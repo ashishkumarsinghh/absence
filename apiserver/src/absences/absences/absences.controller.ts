@@ -23,9 +23,9 @@ export class AbsencesController {
     return this.absencesService.getAbsenceByType(lType);
   }
 
-  @Get('/uid/:userId')
-  getAbsencesOfUser(@Param('userId') userId: string): any {
-    return this.absencesService.getAbsencesOfUser(userId);
+  @Get('/uid/:name')
+  getAbsencesOfUser(@Param('name') name: string): any {
+    return this.absencesService.getAbsencesByName(name);
   }
 
   @Get('/export')
